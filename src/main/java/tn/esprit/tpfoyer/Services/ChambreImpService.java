@@ -3,6 +3,7 @@ package tn.esprit.tpfoyer.Services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.Entity.Chambre;
+import tn.esprit.tpfoyer.Entity.TypeChambre;
 import tn.esprit.tpfoyer.Repositories.ChambreRepository;
 import java.util.List;
 
@@ -35,5 +36,13 @@ class ChambreServiceImpl implements IChambreService{
     @Override
     public Chambre modifyChambre(Chambre c) {
         return chambreRepository.save(c);
+    }
+
+    public List<Chambre> recupererChambreSelonTyp(TypeChambre tc) {
+        return chambreRepository.findAllByTypeC(tc);
+    }
+
+    public Chambre trouverchambreselonetudiant(long cin) {
+        return chambreRepository.trouverChselonEt(cin);
     }
 }
